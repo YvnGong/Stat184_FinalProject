@@ -4,7 +4,7 @@ library(ggplot2)
 library(geosphere)
 library(lubridate)
 
-setwd("~/Desktop/R_184/FinalProject/dataset")
+setwd("./dataset")
 
 #function to calculate the duration within two date-time column
 cal_time<-function(col1, col2){
@@ -118,6 +118,9 @@ main<-function(){
   
   #calculate the new variable school Project Average Cost
   schoolStat$schoolProjAvgCost<-schoolStat$school_Proj_Total_Cost/schoolStat$School_Proj_Count
+  
+  #fwrite new data table with organization of schools
+  fwrite(schoolStat, "School_Donation_Stat.csv")
   
   #clean up data before plotting
   schoolStat<-schoolStat[!is.na(schoolStat$School_Proj_Count)]
